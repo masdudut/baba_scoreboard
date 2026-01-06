@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>qbx_scoreboard_pro</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="root" class="hidden">
+    <div class="board">
+
+      <div class="left">
+        <div class="avatarCol">
+          <div class="avatar">
+            <img id="avatarImg" src="img/avatar.png" alt="avatar" />
+          </div>
+          <div class="avatarId" id="playerId">ID 0</div>
+        </div>
+
+        <div class="identity">
+          <div class="name" id="playerName">PLAYER NAME</div>
+          <div class="sub" id="playerJob">JOB LABEL</div>
+        </div>
+      </div>
+
+      <div class="mid">
+        <div class="col">
+          <div class="row"><span class="k">SALARY</span><span class="v" id="salary">$0</span></div>
+          <div class="row"><span class="k">CASH AMOUNT</span><span class="v" id="cash">$0</span></div>
+          <div class="row"><span class="k">CRAFTING LVL</span><span class="v" id="crafting">0</span></div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="grid" id="jobGrid"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

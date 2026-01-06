@@ -1,0 +1,247 @@
+:root{
+  --text: rgba(255,255,255,0.94);
+  --muted: rgba(255,255,255,0.70);
+}
+
+*{ box-sizing:border-box; }
+
+html, body{
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.hidden{ display:none; }
+
+#root{
+  position:absolute;
+  left: 50%;
+  top: 8%;
+  transform: translateX(-50%);
+  width: 1220px;
+  max-width: calc(100vw - 48px);
+  background: transparent !important;
+}
+
+/* ✅ board: solid sedikit + CLIP isi biar kanan ga “tembus” */
+.board{
+  display:flex;
+  align-items:center;
+  gap: 18px;
+
+  padding: 16px 18px;
+  border-radius: 18px;
+
+  /* naikkan opacity background */
+  background: rgba(10, 10, 14, 0.55) !important;
+
+  border: 1px solid rgba(255,255,255,0.14) !important;
+
+  box-shadow:
+    0 14px 38px rgba(0,0,0,0.55),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+
+  /* PENTING: potong isi agar tidak ada yang keluar */
+  overflow: hidden;
+
+  transform-origin: top center;
+  animation: pop 140ms ease-out;
+}
+
+@keyframes pop{
+  from { transform: translateY(-6px) scale(0.985); opacity: 0.0; }
+  to   { transform: translateY(0px) scale(1); opacity: 1.0; }
+}
+
+/* LEFT */
+.left{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+  min-width: 320px;
+}
+
+.avatarCol{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.avatar{
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  overflow:hidden;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.avatarId{
+  margin-top: 7px;
+  font-family: Rajdhani, Inter, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.80);
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  line-height: 1;
+}
+
+.identity .name{
+  font-family: Rajdhani, Inter, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+.identity .sub{
+  margin-top: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* MIDDLE */
+.mid{
+  display:flex;
+  align-items:stretch;
+  flex: 1;
+  min-width: 520px;
+}
+
+.col{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+  min-width: 260px;
+}
+
+.row{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+.k{
+  font-family: Rajdhani, Inter, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.72);
+  text-transform: uppercase;
+}
+
+.v{
+  font-weight: 900;
+  font-size: 14px;
+  color: rgba(255,255,255,0.96);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+}
+
+/* RIGHT: ✅ bikin panel kanan tetap “di dalam” box */
+.right{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+
+  /* biarkan fleksibel, jangan kunci keras */
+  flex: 0 1 460px;      /* boleh menyusut kalau layar sempit */
+  min-width: 320px;     /* batas minimum */
+  max-width: 460px;     /* batas maksimum */
+
+  padding-right: 10px;  /* jarak aman dari border kanan */
+}
+
+/* Grid auto-fit: otomatis 3 kolom kalau muat, kalau tidak jadi 2 kolom */
+.grid{
+  width: 100%;
+  max-width: 100%;
+
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px 12px;
+
+  align-items: center;
+}
+
+/* Tile FULL mengikuti lebar kolom (jangan width fixed lagi) */
+.tile{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+
+  width: 100%;
+  min-width: 0; /* penting supaya isi tidak maksa melebar */
+
+  padding: 8px 10px;
+
+  border-radius: 14px;
+  background: rgba(0,0,0,0.28);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+/* icon */
+.ico{
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.20);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex: 0 0 26px;
+}
+
+.ico img{
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35));
+}
+
+/* label 1 line, tidak mendorong keluar */
+.jobInline{
+  font-family: Rajdhani, Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.86);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  min-width: 0; /* penting di flex row */
+}
+
+/* count di kanan, selalu aman */
+.jobCount{
+  margin-left: auto;
+
+  font-family: Rajdhani, Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.98);
+
+  flex: 0 0 18px; /* fixed space biar tidak kepotong */
+  text-align: right;
+}
